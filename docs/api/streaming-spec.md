@@ -4,8 +4,9 @@
 
 ユーザーのメッセージに対し、AI の応答を **Server-Sent Events (SSE)** でリアルタイムにストリーミングします。以下の 3 レイヤーを通じてトークンが流れます。
 
-```
-Bedrock (Claude) → FastAPI StreamingResponse → Next.js Route Handler → React Client
+```mermaid
+flowchart LR
+    Bedrock["Bedrock<br/>(Claude)"] --> FastAPI["FastAPI<br/>StreamingResponse"] --> NextJS["Next.js<br/>Route Handler"] --> React["React<br/>Client"]
 ```
 
 ## SSE フォーマット仕様

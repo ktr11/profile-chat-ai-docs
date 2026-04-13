@@ -14,18 +14,15 @@ Amazon S3 Vectors と Bedrock Knowledge Bases を組み合わせ、**月額数�
 
 ## アーキテクチャ
 
-```
-ドキュメント投入フロー:
-┌────────────┐    ┌──────────────────┐    ┌──────────────┐
-│ ドキュメント │───▶│ Bedrock Embeddings│───▶│ S3 Vectors   │
-│ (PDF等)    │    │ Titan Embed v2   │    │ Bucket       │
-└────────────┘    └──────────────────┘    └──────────────┘
+```mermaid
+flowchart LR
+    subgraph ingest["ドキュメント投入フロー"]
+        Doc["ドキュメント<br/>(PDF等)"] --> Embed1["Bedrock Embeddings<br/>Titan Embed v2"] --> S3V1["S3 Vectors<br/>Bucket"]
+    end
 
-クエリフロー:
-┌────────────┐    ┌──────────────────┐    ┌──────────────┐    ┌───────────┐
-│ ユーザー   │───▶│ Bedrock Embeddings│───▶│ S3 Vectors   │───▶│ LangGraph │
-│ クエリ     │    │ クエリベクトル化  │    │ 類似度検索    │    │ Context   │
-└────────────┘    └──────────────────┘    └──────────────┘    └───────────┘
+    subgraph queryflow["クエリフロー"]
+        User["ユーザークエリ"] --> Embed2["Bedrock Embeddings<br/>クエリベクトル化"] --> S3V2["S3 Vectors<br/>類似度検索"] --> Context["LangGraph<br/>Context"]
+    end
 ```
 
 ## S3 Vectors の構造

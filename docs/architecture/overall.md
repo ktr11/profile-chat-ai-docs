@@ -6,39 +6,24 @@
 
 ## 構成図
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  クライアント（ブラウザ）                              1    │
-│  Next.js App Router (TypeScript)                            │
-│  Tailwind CSS + DaisyUI                                     │
-└──────────────────────┬──────────────────────────────────────┘
-                       │ HTTP / Server-Sent Events (SSE)
-                       ▼
-┌─────────────────────────────────────────────────────────────┐
-│  BFF レイヤー（Next.js Route Handlers）                     │
-│  /api/chat  ← SSEストリームをフロントに中継                 │
-│  認証トークン検証 / レートリミット                          │
-└──────────────────────┬──────────────────────────────────────┘
-                       │ HTTP SSE（内部通信）
-                       ▼
-┌─────────────────────────────────────────────────────────────┐
-│  AI バックエンド（FastAPI + LangGraph）                     │
-│  Lambda Web Adapter でサーバーレス化                        │
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │  LangGraph Agent                                    │    │
-│  │  ├── ReAct ループ（思考→行動→観察）                 │    │
-│  │  ├── RAG ツール（S3 Vectors 検索）                  │    │
-│  │  └── StreamingResponse で逐次出力                   │    │
-│  └─────────────────────────────────────────────────────┘    │
-└──────┬──────────────────┬───────────────────┬───────────────┘
-       │                  │                   │
-       ▼                  ▼                   ▼
-┌────────────┐  ┌──────────────────┐  ┌────────────────┐
-│  Amazon    │  │  Amazon DynamoDB │  │  Amazon S3     │
-│  Bedrock   │  │  （チェックポイ  │  │  Vectors       │
-│  Haiku 3.5 │  │  ンター）        │  │  （RAG ストア）│
-└────────────┘  └──────────────────┘  └────────────────┘
+```mermaid
+flowchart TD
+    Client["クライアント（ブラウザ）<br/>Next.js App Router (TypeScript)<br/>Tailwind CSS + DaisyUI"]
+    BFF["BFF レイヤー（Next.js Route Handlers）<br/>/api/chat — SSEストリームをフロントに中継<br/>認証トークン検証 / レートリミット"]
+
+    subgraph backend["AI バックエンド（FastAPI + LangGraph）"]
+        Agent["LangGraph Agent<br/>ReAct ループ（思考→行動→観察）<br/>RAG ツール（S3 Vectors 検索）<br/>StreamingResponse で逐次出力"]
+    end
+
+    Bedrock["Amazon Bedrock<br/>Claude Haiku 3.5"]
+    DynamoDB["Amazon DynamoDB<br/>（チェックポインター）"]
+    S3Vectors["Amazon S3 Vectors<br/>（RAG ストア）"]
+
+    Client -->|"HTTP / Server-Sent Events (SSE)"| BFF
+    BFF -->|"HTTP SSE（内部通信）"| Agent
+    Agent --> Bedrock
+    Agent --> DynamoDB
+    Agent --> S3Vectors
 ```
 
 ## データフロー詳細

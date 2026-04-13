@@ -27,9 +27,9 @@ infra/cdk/
 
 ### スタック分割の理由
 
-```
-data-stack  →  api-stack  →  iam-stack
-（依存なし）    （data参照）    （全リソース参照）
+```mermaid
+flowchart LR
+    DataStack["data-stack<br/>（依存なし）"] --> ApiStack["api-stack<br/>（data参照）"] --> IamStack["iam-stack<br/>（全リソース参照）"]
 ```
 
 - **data-stack**: DynamoDB・S3 などのステートフルリソース。デプロイ頻度が低い

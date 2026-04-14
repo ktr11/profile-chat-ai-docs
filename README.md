@@ -20,10 +20,13 @@ AIエージェント搭載ポートフォリオアプリケーションの設計
 プロジェクトの各詳細については、以下のドキュメントを参照してください。
 
 - **[CLAUDE.md](./CLAUDE.md)**: **プロジェクトの憲法**。AIエージェント（Claude Code等）が開発時に参照するビルドコマンド、コーディング規約、技術スタックの制約を定義しています。
-- **[Architecture](./docs/architecture.md)**: LangGraphを用いたエージェントのワークフローや、Next.jsとの連携図。
-- **[API Specifications](./docs/api-spec.md)**: FastAPIエンドポイントおよびBFF間のインターフェース定義。
-- **[Infrastructure](./docs/infrastructure.md)**: AWS構成図およびデプロイフロー。
-- **[Development Guide](./docs/development.md)**: WSL(Ubuntu)環境でのセットアップ、GitHub CLI、VSCode (HackGen) の設定手順。
+- **[Architecture / システム全体構成](./docs/architecture/overall.md)**: Next.js・FastAPI・Bedrockを組み合わせたシステム全体のアーキテクチャ図。
+- **[Architecture / 低コスト RAG パイプライン設計](./docs/architecture/rag-pipeline.md)**: S3 Vectors + Bedrock Knowledge Bases による低コスト RAG 設計。
+- **[Frontend UI 設計指針](./docs/frontend/ui-design.md)**: DaisyUI を用いたチャット UI コンポーネント設計。
+- **[API / SSE ストリーミング実装仕様](./docs/api/streaming-spec.md)**: FastAPIエンドポイントおよびBFF間のSSEインターフェース定義。
+- **[Infrastructure / AWS リソース設計](./docs/infrastructure/aws-resources.md)**: AWS構成図およびリソース一覧。
+- **[Infrastructure / CDK インフラ定義ガイド](./docs/infrastructure/cdk-guide.md)**: AWS CDK によるデプロイフローと戦略。
+- **[Development Guide](./docs/development/local-setup.md)**: WSL(Ubuntu)環境でのセットアップ、GitHub CLI、VSCode (HackGen) の設定手順。
 
 ## AIエージェントとの協調開発
 

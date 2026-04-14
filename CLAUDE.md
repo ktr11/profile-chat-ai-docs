@@ -4,7 +4,7 @@
 
 ## プロジェクト概要
 
-**profile-chat-ai-docs** は、AIポートフォリオアプリ「profile-chat-ai」の設計図およびドキュメントを管理するリポジトリです。アプリ本体のコードは含まず、**設計ドキュメント・仕様書・インフラ定義** のみを管理します。
+**profile-chat-ai-docs** は、AIポートフォリオアプリ「profile-chat-ai」の設計図およびドキュメントを管理するリポジトリです。アプリ本体のコードは含まず、**設計ドキュメント・仕様書** のみを管理します。
 
 ## システム構成サマリ
 
@@ -38,7 +38,6 @@ FastAPI (Python)      ← AIバックエンド
 | AI モデル | Amazon Bedrock — Claude Haiku 3.5 | コスト最適化のため Haiku を採用 |
 | 永続化 | DynamoDB + S3 (状態オフロード) | `langgraph-checkpoint-aws` 使用 |
 | RAG | Amazon S3 Vectors + Bedrock Knowledge Bases | 月額数円〜の低コスト構成 |
-| インフラ定義 | AWS CDK (TypeScript) | `infra/cdk/` 参照 |
 
 ## ツールチェーン規約
 
@@ -62,8 +61,6 @@ docs/
 │   └── cdk-guide.md        # CDK 戦略
 └── development/
     └── local-setup.md      # ローカル開発環境構築
-infra/
-└── cdk/                    # CDK プロジェクト (TypeScript)
 ```
 
 ## 重要な設計方針

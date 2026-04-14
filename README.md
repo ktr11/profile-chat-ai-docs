@@ -20,9 +20,9 @@ AIエージェント搭載ポートフォリオアプリケーションの設計
 プロジェクトの各詳細については、以下のドキュメントを参照してください。
 
 - **[CLAUDE.md](./CLAUDE.md)**: **プロジェクトの憲法**。AIエージェント（Claude Code等）が開発時に参照するビルドコマンド、コーディング規約、技術スタックの制約を定義しています。
-- **[Architecture](./docs/architecture.md)**: LangGraphを用いたエージェントのワークフローや、Next.jsとの連携図。
+- **[Architecture](./docs/architecture/)**: LangGraphを用いたエージェントのワークフローや、Next.jsとの連携図。
 - **[API Specifications](./docs/api-spec.md)**: FastAPIエンドポイントおよびBFF間のインターフェース定義。
-- **[Infrastructure](./docs/infrastructure.md)**: AWS構成図およびデプロイフロー。
+- **[Infrastructure](./docs/infrastructure/)**: AWS構成図およびデプロイフロー。
 - **[Development Guide](./docs/development.md)**: WSL(Ubuntu)環境でのセットアップ、GitHub CLI、VSCode (HackGen) の設定手順。
 
 ## AIエージェントとの協調開発

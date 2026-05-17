@@ -17,16 +17,19 @@ AIエージェント搭載ポートフォリオアプリケーションの設計
 
 ## ドキュメント構成
 
-プロジェクトの各詳細については、以下のドキュメントを参照してください。
+本リポジトリには **プロジェクト横断のドキュメント** を配置しています。リポジトリ固有のドキュメントは各リポジトリの `/docs/` を参照してください。
+
+### 本リポジトリのドキュメント
 
 - **[CLAUDE.md](./CLAUDE.md)**: **プロジェクトの憲法**。AIエージェント（Claude Code等）が開発時に参照するビルドコマンド、コーディング規約、技術スタックの制約を定義しています。
 - **[Architecture / システム全体構成](./docs/architecture/overall.md)**: Next.js・FastAPI・Bedrockを組み合わせたシステム全体のアーキテクチャ図。
 - **[Architecture / 低コスト RAG パイプライン設計](./docs/architecture/rag-pipeline.md)**: S3 Vectors + Bedrock Knowledge Bases による低コスト RAG 設計。
-- **[Frontend UI 設計指針](./docs/frontend/ui-design.md)**: DaisyUI を用いたチャット UI コンポーネント設計。
 - **[API / SSE ストリーミング実装仕様](./docs/api/streaming-spec.md)**: FastAPIエンドポイントおよびBFF間のSSEインターフェース定義。
-- **[Infrastructure / AWS リソース設計](./docs/infrastructure/aws-resources.md)**: AWS構成図およびリソース一覧。
-- **[Infrastructure / CDK インフラ定義ガイド](./docs/infrastructure/cdk-guide.md)**: AWS CDK によるデプロイフローと戦略。
-- **[Development Guide](./docs/development/local-setup.md)**: WSL(Ubuntu)環境でのセットアップ、GitHub CLI、VSCode (HackGen) の設定手順。
+
+### 各リポジトリのドキュメント
+
+- **[profile-chat-ai-fe](https://github.com/ktr11/profile-chat-ai-fe)**: フロントエンド UI 設計指針 → [`docs/ui-design.md`](https://github.com/ktr11/profile-chat-ai-fe/blob/main/docs/ui-design.md)
+- **[profile-chat-ai-infra](https://github.com/ktr11/profile-chat-ai-infra)**: AWS リソース設計 → [`docs/aws-resources.md`](https://github.com/ktr11/profile-chat-ai-infra/blob/main/docs/aws-resources.md)、CDK ガイド → [`docs/cdk-guide.md`](https://github.com/ktr11/profile-chat-ai-infra/blob/main/docs/cdk-guide.md)
 
 ## AIエージェントとの協調開発
 

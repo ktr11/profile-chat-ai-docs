@@ -47,21 +47,22 @@ FastAPI (Python)      ← AIバックエンド
 
 ## ドキュメント構造
 
+本リポジトリにはプロジェクト横断のドキュメントのみ配置。リポジトリ固有のドキュメントは各リポジトリの `/docs/` を参照。
+
 ```
 docs/
 ├── architecture/
 │   ├── overall.md          # システム全体構成
 │   └── rag-pipeline.md     # 低コスト RAG 設計
-├── frontend/
-│   └── ui-design.md        # DaisyUI チャット UI 設計指針
-├── api/
-│   └── streaming-spec.md   # SSE ストリーミング仕様
-├── infrastructure/
-│   ├── aws-resources.md    # AWS リソース設計
-│   └── cdk-guide.md        # CDK 戦略
-└── development/
-    └── local-setup.md      # ローカル開発環境構築
+└── api/
+    └── streaming-spec.md   # SSE ストリーミング仕様
 ```
+
+### 各リポジトリのドキュメント
+
+- `profile-chat-ai-fe/docs/ui-design.md` — DaisyUI チャット UI 設計指針
+- `profile-chat-ai-infra/docs/aws-resources.md` — AWS リソース設計
+- `profile-chat-ai-infra/docs/cdk-guide.md` — CDK 戦略
 
 ## 重要な設計方針
 
@@ -77,4 +78,4 @@ docs/
 export CLAUDE_CODE_MAX_OUTPUT_TOKENS=4096
 ```
 
-詳細は [`docs/infrastructure/aws-resources.md`](docs/infrastructure/aws-resources.md) を参照。
+詳細は [`profile-chat-ai-infra/docs/aws-resources.md`](https://github.com/ktr11/profile-chat-ai-infra/blob/main/docs/aws-resources.md) を参照。

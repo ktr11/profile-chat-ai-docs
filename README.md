@@ -1,18 +1,19 @@
 # profile-chat-ai-docs
 
-AIエージェント搭載ポートフォリオアプリケーションの設計・仕様ドキュメント管理リポジトリです。
+AIチャット搭載ポートフォリオアプリケーションのプロジェクト横断ドキュメント管理リポジトリです。
 
 ## 概要
 
-本プロジェクトは、Next.js（BFF）とFastAPI + LangGraph（AI Agent）を組み合わせた、AIエージェント搭載型のポートフォリオアプリの開発を目的としています。
-このリポジトリは「プロジェクトの真実の源」として機能し、アーキテクチャ、API仕様、インフラ設計、および開発環境の手順を中央管理します。
+本プロジェクトは、Next.js（BFF）と FastAPI を組み合わせたチャットアプリの開発を目的としています。
+このリポジトリはプロジェクト横断の設計ドキュメントを管理します。リポジトリ固有のドキュメントは各リポジトリの `/docs/` に配置しています。
 
 ## 技術スタック
 
-- **Frontend/BFF**: Next.js (App Router)
-- **AI Backend**: FastAPI, LangGraph (AIエージェント制御)
-- **Model**: Claude 3.5 Sonnet / 4.6 Sonnet (Amazon Bedrock)
-- **Infrastructure**: AWS (Lamba / App Runner / ECS 等想定)
+- **Frontend/BFF**: Next.js (App Router) + Tailwind CSS + DaisyUI
+- **Backend**: FastAPI (Python)
+- **Database**: Amazon DynamoDB
+- **LLM**: 未実装（Bedrock + Claude で実装予定）
+- **Infrastructure**: AWS CDK (TypeScript)
 - **Documentation**: Markdown, Mermaid.js
 
 ## ドキュメント構成
@@ -21,21 +22,26 @@ AIエージェント搭載ポートフォリオアプリケーションの設計
 
 ### 本リポジトリのドキュメント
 
-- **[CLAUDE.md](./CLAUDE.md)**: **プロジェクトの憲法**。AIエージェント（Claude Code等）が開発時に参照するビルドコマンド、コーディング規約、技術スタックの制約を定義しています。
-- **[Architecture / システム全体構成](./docs/architecture/overall.md)**: Next.js・FastAPI・Bedrockを組み合わせたシステム全体のアーキテクチャ図。
-- **[Architecture / 低コスト RAG パイプライン設計](./docs/architecture/rag-pipeline.md)**: S3 Vectors + Bedrock Knowledge Bases による低コスト RAG 設計。
-- **[API / SSE ストリーミング実装仕様](./docs/api/streaming-spec.md)**: FastAPIエンドポイントおよびBFF間のSSEインターフェース定義。
+- **[CLAUDE.md](./CLAUDE.md)**: AIエージェント（Claude Code等）が開発時に参照するコンテキストファイル。
+- **[Architecture / システム全体構成](./docs/architecture/overall.md)**: Next.js・FastAPI を組み合わせたシステム全体のアーキテクチャ図。
+
+### 将来設計ドキュメント（未実装）
+
+- **[RAG パイプライン設計](./docs/future/rag-pipeline.md)**: S3 Vectors + Bedrock Knowledge Bases による低コスト RAG 設計。
+- **[SSE ストリーミング実装仕様](./docs/future/streaming-spec.md)**: FastAPIエンドポイントおよびBFF間のSSEインターフェース定義。
 
 ### 各リポジトリのドキュメント
 
 - **[profile-chat-ai-fe](https://github.com/ktr11/profile-chat-ai-fe)**: フロントエンド UI 設計指針 → [`docs/ui-design.md`](https://github.com/ktr11/profile-chat-ai-fe/blob/main/docs/ui-design.md)
 - **[profile-chat-ai-infra](https://github.com/ktr11/profile-chat-ai-infra)**: AWS リソース設計 → [`docs/aws-resources.md`](https://github.com/ktr11/profile-chat-ai-infra/blob/main/docs/aws-resources.md)、CDK ガイド → [`docs/cdk-guide.md`](https://github.com/ktr11/profile-chat-ai-infra/blob/main/docs/cdk-guide.md)
+- **[profile-chat-ai-api](https://github.com/ktr11/profile-chat-ai-api)**: API 仕様 → [`docs/openapi.json`](https://github.com/ktr11/profile-chat-ai-api/blob/main/docs/openapi.json)
 
-## AIエージェントとの協調開発
+## リポジトリ一覧
 
-本プロジェクトでは、AIエージェントが効率的かつ一貫性を持って開発を行えるよう、`CLAUDE.md` を中心としたコンテキスト管理を行っています。開発者は、新しい機能の実装や修正の際、まず `CLAUDE.md` のルールを確認・更新することを推奨します。
-
-### 基本コマンド
-- `npm run dev` (Frontend)
-- `pytest` (Backend)
-- `gh` (GitHub CLIを用いた操作)
+| リポジトリ | 役割 |
+|---|---|
+| [profile-chat-ai-docs](https://github.com/ktr11/profile-chat-ai-docs) | プロジェクト横断ドキュメント（本リポ） |
+| [profile-chat-ai-fe](https://github.com/ktr11/profile-chat-ai-fe) | Next.js フロントエンド + BFF |
+| [profile-chat-ai-api](https://github.com/ktr11/profile-chat-ai-api) | FastAPI バックエンド |
+| [profile-chat-ai-infra](https://github.com/ktr11/profile-chat-ai-infra) | AWS CDK インフラ定義 |
+| [profile-chat-ai-skills](https://github.com/ktr11/profile-chat-ai-skills) | Claude Code 共通スキル |
